@@ -12,7 +12,7 @@ order by kcu.table_name;
 
 /* Вывести всех неактивных покупателей */
 
-select concat(first_name,last_name) as user_name from customer where active = '0';
+select concat(first_name,' ',last_name) as user_name from customer where active = '0';
 
 /* Вывести все фильмы, выпущенные в 2006 году */
 
