@@ -14,7 +14,7 @@ from customer c
 	join address a
 		on c.address_id = a.address_id
 	join city ct
-		on a.address_id = ct.city_id
+		on a.city_id = ct.city_id
 order by user_name;
 
 
@@ -38,7 +38,7 @@ where s.store_id in
 
 /* выведите количество актеров, снимавшихся в фильмах, которые сдаются в аренду за 2,99 */
 
-select count(distinct a.actor_id) as actors
+select count(a.actor_id) as actors
 from film f
 	join film_actor a 
 		on f.film_id=a.film_id
