@@ -18,11 +18,6 @@
 
 /*Пришлите скрипты создания таблиц и скрипты по добавлению в каждую таблицу по 5 строк с данными*/
 
-/*Дополнительная часть:
--показать, как назначать внешние ключи краткой записью при создании таблицы и как можно присвоить внешние ключи для столбцов существующей таблицы
--масштабировать получившуюся базу данных используя следующие типы данных: timestamp, boolean и text[]*/
-
-
 create schema peoples;
 
 set search_path to peoples;
@@ -72,3 +67,22 @@ insert into lang_nation (id_lang, id_nation) values
 
 insert into nation_countr (id_nation, id_countr) values
 (1,1), (1,5), (1,7), (5,6), (3,2);
+
+/*Дополнительная часть:
+-показать, как назначать внешние ключи краткой записью при создании таблицы и как можно присвоить внешние ключи для столбцов существующей таблицы
+-масштабировать получившуюся базу данных используя следующие типы данных: timestamp, boolean и text[]*/
+
+create table lang_countr(
+id_lang int,
+id_countr int,
+unique (id_lang, id_countr),
+foreign key(id_lang) references languages(id_language)
+);
+
+alter table lang_countr add foreign key(id_countr) references countries(id_country);
+
+alter table languages add column dates timestamp;
+
+alter table nationalities add column in_europe boolean;
+
+alter table countries add column params text [];
