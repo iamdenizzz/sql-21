@@ -1,0 +1,24 @@
+//Основная часть:
+//Ссылка на терминал для работы с MongoDB [https://docs.mongodb.com/manual/tutorial/getting-started/]
+//-создать свою базу данных
+
+use mydb
+
+//-создать коллекцию пользователей
+
+db.createCollection("users", {autoIndexID: true, max: 10000})
+
+//-добавить информацию по 2-м людям с полями фамилия, имя и контактная информация (как вложенный объект [https://docs.mongodb.com/manual/core/document/#embedded-documents])
+
+db.users.insertMany([
+	{ first_name:"Ivan", last_name:"Ivanov", contacts: {city:"Moscow", street:"Volhonka", home:"5"}},
+	{ first_name:"Olga", last_name:"Sidorova", contacts: {city:"St.Petersburg", street:"Sedova, home:"12"}},
+]);
+
+//Дополнительная часть:
+//-вывести количество контактов у каждого пользователя, ссылки на документацию:
+//https://docs.mongodb.com/manual/reference/operator/aggregation/
+//https://docs.mongodb.com/manual/reference/operator/aggregation/size/
+//https://docs.mongodb.com/manual/reference/operator/aggregation/objectToArray/
+//https://docs.mongodb.com/manual/reference/operator/aggregation/project/
+//https://docs.mongodb.com/manual/reference/operator/aggregation/addFields/
